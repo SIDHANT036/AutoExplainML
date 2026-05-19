@@ -2,7 +2,6 @@ fastapi
 uvicorn
 pandas
 numpy
-shap
 scikit-learn
+shap
 joblib
-streamlit
