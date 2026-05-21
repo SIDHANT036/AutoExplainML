@@ -1,9 +1,7 @@
-# cli/main.py
-
 import argparse
 import joblib
 import pandas as pd
-from autoexplainml.core.explainer import explain
+from autoexplainml.core.pipeline import run_pipeline
 
 def main():
 
@@ -16,6 +14,9 @@ def main():
     model = joblib.load(args.model)
     X = pd.read_csv(args.data)
 
-    result = explain(model, X)
+    result = run_pipeline(model, X)
 
     print(result)
+
+if __name__ == "__main__":
+    main()

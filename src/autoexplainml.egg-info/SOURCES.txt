@@ -11,14 +11,17 @@ src/autoexplainml.egg-info/top_level.txt
 src/autoexplainml/api/app.py
 src/autoexplainml/api/service.py
 src/autoexplainml/cli/main.py
+src/autoexplainml/computer_vision/gradcam.py
 src/autoexplainml/core/config.py
 src/autoexplainml/core/explainer.py
 src/autoexplainml/core/registry.py
 src/autoexplainml/core/validator.py
+src/autoexplainml/deep_learning/dl_explainer.py
 src/autoexplainml/explainers/base.py
 src/autoexplainml/explainers/lime_explainer.py
 src/autoexplainml/explainers/permutation_explainer.py
 src/autoexplainml/explainers/shap_explainer.py
+src/autoexplainml/pipelines/explain_pipeline.py
 src/autoexplainml/utils/io.py
 src/autoexplainml/utils/logging.py
 src/autoexplainml/visualization/dashboard.py

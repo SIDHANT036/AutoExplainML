@@ -9,6 +9,11 @@ A production-ready machine learning explainability tool that converts complex ML
 - Frontend App: https://autoexplainml-ui.onrender.com
 
 ---
+pip install autoexplainml[dl]
+pip install autoexplainml[cv]
+pip install autoexplainml[ml]
+pip install autoexplainml[full]
+---
 
 ## 🚀 Features
 - Upload trained ML models (.pkl)
