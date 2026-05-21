@@ -4,16 +4,17 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "autoexplainml"
-version = "0.1.1"
-description = "Explainable AI package using SHAP"
+version = "1.1.1"
+description = "Production-grade Explainable AI framework"
 authors = [{ name = "Sidhant Narang" }]
-readme = "README.md"
-requires-python = ">=3.8"
 dependencies = [
     "numpy",
     "pandas",
     "scikit-learn",
-    "shap"
+    "shap",
+    "fastapi",
+    "uvicorn",
+    "matplotlib"
 ]
 
 [tool.setuptools]

@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
-from autoexplainml.explainer import explain
+from autoexplainml.core.explainer import explain
 
 st.title("AutoExplainML")
 

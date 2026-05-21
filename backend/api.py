@@ -1,7 +1,7 @@
 from fastapi import FastAPI, UploadFile, File
 import pandas as pd
 import joblib
-from autoexplainml.explainer import explain
+from autoexplainml.core.explainer import explain
 
 app = FastAPI(title="AutoExplainML")
 
