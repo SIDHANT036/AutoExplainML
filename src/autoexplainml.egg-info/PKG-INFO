@@ -1,14 +1,271 @@
 Metadata-Version: 2.4
 Name: autoexplainml
-Version: 1.1.1
-Summary: Production-grade Explainable AI framework
+Version: 3.0.0
+Summary: A modular Explainable AI framework for ML, Deep Learning, and Computer Vision
 Author: Sidhant Narang
+License: MIT
+Project-URL: Homepage, https://github.com/SIDHANT036/AutoExplainML
+Project-URL: Repository, https://github.com/SIDHANT036/AutoExplainML
+Project-URL: Issues, https://github.com/SIDHANT036/AutoExplainML/issues
+Keywords: machine-learning,explainable-ai,ml,interpretability,shap,lime,ai,auto-ml,education
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
 License-File: LICENSE
-Requires-Dist: numpy
-Requires-Dist: pandas
-Requires-Dist: scikit-learn
-Requires-Dist: shap
-Requires-Dist: fastapi
-Requires-Dist: uvicorn
-Requires-Dist: matplotlib
+Requires-Dist: numpy<2.0,>=1.23
+Requires-Dist: pandas<3.0,>=1.5
+Requires-Dist: scikit-learn<2.0,>=1.2
+Requires-Dist: matplotlib<4.0,>=3.6
+Provides-Extra: ml
+Requires-Dist: xgboost<3.0,>=1.7; extra == "ml"
+Requires-Dist: lightgbm<5.0,>=4.0; extra == "ml"
+Requires-Dist: catboost<2.0,>=1.2; extra == "ml"
+Requires-Dist: seaborn<1.0,>=0.12; extra == "ml"
+Requires-Dist: statsmodels<1.0,>=0.14; extra == "ml"
+Requires-Dist: scipy<2.0,>=1.10; extra == "ml"
+Provides-Extra: dl-torch
+Requires-Dist: torch; extra == "dl-torch"
+Requires-Dist: torchvision; extra == "dl-torch"
+Requires-Dist: torchaudio; extra == "dl-torch"
+Provides-Extra: dl-tf
+Requires-Dist: tensorflow<3.0,>=2.12; extra == "dl-tf"
+Requires-Dist: keras<3.0,>=2.12; extra == "dl-tf"
+Requires-Dist: h5py<4.0,>=3.8; extra == "dl-tf"
+Provides-Extra: cv
+Requires-Dist: opencv-python<5.0,>=4.7; extra == "cv"
+Requires-Dist: scikit-image<1.0,>=0.20; extra == "cv"
+Requires-Dist: Pillow<12.0,>=9.0; extra == "cv"
+Provides-Extra: xai
+Requires-Dist: shap<1.0,>=0.41; extra == "xai"
+Requires-Dist: lime<1.0,>=0.2; extra == "xai"
+Requires-Dist: eli5<1.0,>=0.13; extra == "xai"
+Provides-Extra: full
+Requires-Dist: xgboost<3.0,>=1.7; extra == "full"
+Requires-Dist: lightgbm<5.0,>=4.0; extra == "full"
+Requires-Dist: catboost<2.0,>=1.2; extra == "full"
+Requires-Dist: seaborn<1.0,>=0.12; extra == "full"
+Requires-Dist: statsmodels<1.0,>=0.14; extra == "full"
+Requires-Dist: scipy<2.0,>=1.10; extra == "full"
+Requires-Dist: shap<1.0,>=0.41; extra == "full"
+Requires-Dist: lime<1.0,>=0.2; extra == "full"
+Requires-Dist: eli5<1.0,>=0.13; extra == "full"
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
+Requires-Dist: black>=23.0; extra == "dev"
+Requires-Dist: flake8>=6.0; extra == "dev"
+Requires-Dist: mypy>=1.0; extra == "dev"
+Requires-Dist: isort>=5.0; extra == "dev"
 Dynamic: license-file
+
+
+# 🧠 AutoExplainML
+
+A production-ready Explainable AI framework that transforms complex ML models into **human-readable insights, reports, and automated project outputs**.
+
+It supports:
+- Classical Machine Learning
+- Deep Learning (optional)
+- Computer Vision (optional)
+- Automated reporting (PDF + HTML)
+- CLI + API + Web UI
+
+---
+
+## 🌐 Live Demo
+
+- 🔗 Backend API: https://autoexplainml.onrender.com  
+- 🔗 Frontend UI: https://autoexplainml-ui.onrender.com  
+
+---
+
+# ⚡ Installation
+
+## 🧩 Core Installation
+```bash
+pip install autoexplainml
+````
+
+---
+
+## 🚀 Optional Feature Packs
+
+### 📊 Machine Learning Stack
+
+```bash
+pip install autoexplainml[ml]
+```
+
+### 👁 Computer Vision Stack
+
+```bash
+pip install autoexplainml[cv]
+```
+
+### 🧠 Deep Learning (PyTorch)
+
+```bash
+pip install autoexplainml[dl_torch]
+```
+
+### 🤖 Deep Learning (TensorFlow)
+
+```bash
+pip install autoexplainml[dl_tf]
+```
+
+### 🔥 Full Feature Pack (Recommended)
+
+```bash
+pip install autoexplainml[full]
+```
+
+---
+
+# 🚀 CLI Usage
+
+## 📊 Basic Analysis Mode
+
+```bash
+autoexplainml model.pkl data.csv --mode analyze
+```
+
+## 📦 Full Project Mode (Auto Reports)
+
+```bash
+autoexplainml model.pkl data.csv --mode project
+```
+
+---
+
+# 📁 Output Generated
+
+When using `--mode project`:
+
+```
+autoexplainml_outputs/
+ ├── result.json
+ ├── report.html
+ ├── report.pdf
+```
+
+---
+
+# 🚀 Features
+
+## 🧠 Explainability Engine
+
+* SHAP-based feature importance
+* LIME explanations
+* Permutation analysis
+
+## 📊 Intelligence Layer
+
+* Data quality checks
+* Fairness & bias detection
+* Model reasoning insights
+
+## 📦 Automation Layer
+
+* Full ML project generation
+* Auto PDF + HTML reports
+* Structured JSON outputs
+
+## 🌐 Interfaces
+
+* FastAPI backend
+* Streamlit frontend
+* CLI tool
+
+---
+
+# 🧠 Architecture
+
+```
+Frontend (Streamlit)
+        ↓
+FastAPI Backend
+        ↓
+AutoExplainML Engine
+        ↓
+Explainability + Intelligence Layer
+        ↓
+Reporting System (PDF/HTML)
+```
+
+---
+
+# 📌 Use Cases
+
+## 🎓 Students
+
+* Auto-generate ML projects
+* Submit ready-made reports
+* Learn explainability easily
+
+## 🧠 Data Scientists
+
+* Understand model decisions
+* Debug feature impact
+
+## 🏢 Industry
+
+* Model transparency
+* AI auditability
+
+---
+
+# ⚙️ Run Locally
+
+## Backend
+
+```bash
+uvicorn backend.api:app --reload
+```
+
+## Frontend
+
+```bash
+streamlit run frontend/app.py
+```
+
+---
+
+# 📸 Screenshots
+
+![UI Screenshot](Screenshot%202026-05-20%20at%2000.54.12.png)
+![Report Screenshot](Screenshot%202026-05-20%20at%2000.54.05.png)
+
+---
+
+# 🧪 Example Workflow
+
+```python
+from autoexplainml.core.pipeline import run_pipeline
+
+result = run_pipeline(model, X)
+print(result)
+```
+
+---
+
+# 👨‍💻 Author
+
+Sidhant Narang
+
+---
+
+# 🔥 Why This Project Matters
+
+AutoExplainML bridges the gap between:
+
+* Machine Learning models
+* Human understanding
+* Automated reporting systems
+
+Making AI **transparent, explainable, and usable for everyone**.
+
+

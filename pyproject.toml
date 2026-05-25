@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=70", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "autoexplainml"
-version = "2.0.0"
+version = "3.0.0"
 description = "A modular Explainable AI framework for ML, Deep Learning, and Computer Vision"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -16,19 +16,22 @@ authors = [
 license = { text = "MIT" }
 
 dependencies = [
-    "numpy",
-    "pandas",
-    "scikit-learn",
-    "matplotlib"
+    "numpy>=1.23,<2.0",
+    "pandas>=1.5,<3.0",
+    "scikit-learn>=1.2,<2.0",
+    "matplotlib>=3.6,<4.0"
 ]
 
 keywords = [
     "machine-learning",
     "explainable-ai",
     "ml",
-    "deep-learning",
-    "computer-vision",
-    "shap"
+    "interpretability",
+    "shap",
+    "lime",
+    "ai",
+    "auto-ml",
+    "education"
 ]
 
 classifiers = [
@@ -39,87 +42,83 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Artificial Intelligence"
 ]
 
+# =========================
+# OPTIONAL DEPENDENCIES
+# =========================
 [project.optional-dependencies]
 
-# =========================
+# -------------------------
 # Machine Learning Stack
-# =========================
+# -------------------------
 ml = [
-    "xgboost",
-    "lightgbm",
-    "catboost",
-    "seaborn",
-    "statsmodels",
-    "scipy"
+    "xgboost>=1.7,<3.0",
+    "lightgbm>=4.0,<5.0",
+    "catboost>=1.2,<2.0",
+    "seaborn>=0.12,<1.0",
+    "statsmodels>=0.14,<1.0",
+    "scipy>=1.10,<2.0"
 ]
 
-# =========================
-# Deep Learning Stack
-# =========================
-dl = [
+# -------------------------
+# Deep Learning (PyTorch)
+# -------------------------
+dl_torch = [
     "torch",
     "torchvision",
-    "torchaudio",
-    "tensorflow",
-    "keras",
-    "h5py"
+    "torchaudio"
 ]
 
-# =========================
-# Computer Vision Stack
-# =========================
+# -------------------------
+# Deep Learning (TensorFlow - ISOLATED USE)
+# -------------------------
+dl_tf = [
+    "tensorflow>=2.12,<3.0",
+    "keras>=2.12,<3.0",
+    "h5py>=3.8,<4.0"
+]
+
+# -------------------------
+# Computer Vision
+# -------------------------
 cv = [
-    "opencv-python",
-    "scikit-image",
-    "Pillow",
-    "imageio",
-    "albumentations"
+    "opencv-python>=4.7,<5.0",
+    "scikit-image>=0.20,<1.0",
+    "Pillow>=9.0,<12.0"
 ]
 
-# =========================
-# Explainability Stack
-# =========================
+# -------------------------
+# Explainability Core
+# -------------------------
 xai = [
-    "shap",
-    "lime",
-    "eli5"
+    "shap>=0.41,<1.0",
+    "lime>=0.2,<1.0",
+    "eli5>=0.13,<1.0"
 ]
 
-# =========================
-# Full Advanced Stack
-# =========================
+# -------------------------
+# SAFE FULL STACK (NO DL)
+# -------------------------
 full = [
-    "xgboost",
-    "lightgbm",
-    "catboost",
-    "seaborn",
-    "statsmodels",
-    "scipy",
-    "torch",
-    "torchvision",
-    "torchaudio",
-    "tensorflow",
-    "keras",
-    "h5py",
-    "opencv-python",
-    "scikit-image",
-    "Pillow",
-    "imageio",
-    "albumentations",
-    "shap",
-    "lime",
-    "eli5"
+    "xgboost>=1.7,<3.0",
+    "lightgbm>=4.0,<5.0",
+    "catboost>=1.2,<2.0",
+    "seaborn>=0.12,<1.0",
+    "statsmodels>=0.14,<1.0",
+    "scipy>=1.10,<2.0",
+    "shap>=0.41,<1.0",
+    "lime>=0.2,<1.0",
+    "eli5>=0.13,<1.0"
 ]
 
-# =========================
-# Development Tools
-# =========================
+# -------------------------
+# DEVELOPMENT
+# -------------------------
 dev = [
-    "pytest",
-    "black",
-    "flake8",
-    "mypy",
-    "isort"
+    "pytest>=7.0",
+    "black>=23.0",
+    "flake8>=6.0",
+    "mypy>=1.0",
+    "isort>=5.0"
 ]
 
 [project.urls]
@@ -127,8 +126,12 @@ Homepage = "https://github.com/SIDHANT036/AutoExplainML"
 Repository = "https://github.com/SIDHANT036/AutoExplainML"
 Issues = "https://github.com/SIDHANT036/AutoExplainML/issues"
 
+# =========================
+# SETUPTOOLS CONFIG
+# =========================
 [tool.setuptools]
 package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+exclude = ["tests*"]

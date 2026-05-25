@@ -1,80 +1,208 @@
+
 # 🧠 AutoExplainML
 
-A production-ready machine learning explainability tool that converts complex ML model behavior into simple human-readable insights using SHAP.
+A production-ready Explainable AI framework that transforms complex ML models into **human-readable insights, reports, and automated project outputs**.
+
+It supports:
+- Classical Machine Learning
+- Deep Learning (optional)
+- Computer Vision (optional)
+- Automated reporting (PDF + HTML)
+- CLI + API + Web UI
 
 ---
 
 ## 🌐 Live Demo
-- Backend API: https://autoexplainml.onrender.com
-- Frontend App: https://autoexplainml-ui.onrender.com
+
+- 🔗 Backend API: https://autoexplainml.onrender.com  
+- 🔗 Frontend UI: https://autoexplainml-ui.onrender.com  
 
 ---
-pip install autoexplainml[dl]
-pip install autoexplainml[cv]
+
+# ⚡ Installation
+
+## 🧩 Core Installation
+```bash
+pip install autoexplainml
+````
+
+---
+
+## 🚀 Optional Feature Packs
+
+### 📊 Machine Learning Stack
+
+```bash
 pip install autoexplainml[ml]
+```
+
+### 👁 Computer Vision Stack
+
+```bash
+pip install autoexplainml[cv]
+```
+
+### 🧠 Deep Learning (PyTorch)
+
+```bash
+pip install autoexplainml[dl_torch]
+```
+
+### 🤖 Deep Learning (TensorFlow)
+
+```bash
+pip install autoexplainml[dl_tf]
+```
+
+### 🔥 Full Feature Pack (Recommended)
+
+```bash
 pip install autoexplainml[full]
----
-
-## 🚀 Features
-- Upload trained ML models (.pkl)
-- Upload datasets (.csv)
-- Get automatic feature importance explanations
-- SHAP-based model interpretation
-- Clean web UI (Streamlit)
-- FastAPI backend
-- Cloud deployment (Render)
-
----
-## 📌 Use Cases
-
-### 🧠 Data Scientists
-Understand which features influence model predictions.
-
-### 🎓 Students
-Learn how ML models behave internally.
-
-### 🏢 Business Analysts
-Gain transparency in AI-based decisions.
+```
 
 ---
 
-## 🧠 Tech Stack
-- Python
-- FastAPI
-- Streamlit
-- SHAP
-- Pandas, NumPy
-- Scikit-learn
-- Render (Deployment)
+# 🚀 CLI Usage
+
+## 📊 Basic Analysis Mode
+
+```bash
+autoexplainml model.pkl data.csv --mode analyze
+```
+
+## 📦 Full Project Mode (Auto Reports)
+
+```bash
+autoexplainml model.pkl data.csv --mode project
+```
 
 ---
 
-## 📦 Architecture
-Frontend (Streamlit UI)
+# 📁 Output Generated
+
+When using `--mode project`:
+
+```
+autoexplainml_outputs/
+ ├── result.json
+ ├── report.html
+ ├── report.pdf
+```
+
+---
+
+# 🚀 Features
+
+## 🧠 Explainability Engine
+
+* SHAP-based feature importance
+* LIME explanations
+* Permutation analysis
+
+## 📊 Intelligence Layer
+
+* Data quality checks
+* Fairness & bias detection
+* Model reasoning insights
+
+## 📦 Automation Layer
+
+* Full ML project generation
+* Auto PDF + HTML reports
+* Structured JSON outputs
+
+## 🌐 Interfaces
+
+* FastAPI backend
+* Streamlit frontend
+* CLI tool
+
+---
+
+# 🧠 Architecture
+
+```
+Frontend (Streamlit)
         ↓
-Backend API (FastAPI)
+FastAPI Backend
         ↓
-SHAP Explainer Engine
+AutoExplainML Engine
         ↓
-ML Model Output
+Explainability + Intelligence Layer
+        ↓
+Reporting System (PDF/HTML)
+```
 
 ---
 
-## 📸 Screenshots
-![alt text](<Screenshot 2026-05-20 at 00.54.12.png>)
-![alt text](<Screenshot 2026-05-20 at 00.54.05.png>)
+# 📌 Use Cases
+
+## 🎓 Students
+
+* Auto-generate ML projects
+* Submit ready-made reports
+* Learn explainability easily
+
+## 🧠 Data Scientists
+
+* Understand model decisions
+* Debug feature impact
+
+## 🏢 Industry
+
+* Model transparency
+* AI auditability
+
 ---
 
-## ⚙️ Run Locally
+# ⚙️ Run Locally
 
-### Backend
+## Backend
+
+```bash
 uvicorn backend.api:app --reload
+```
 
-### Frontend
+## Frontend
+
+```bash
 streamlit run frontend/app.py
+```
 
-### Backend
+---
 
+# 📸 Screenshots
 
-## 👨‍💻 Author
+![UI Screenshot](Screenshot%202026-05-20%20at%2000.54.12.png)
+![Report Screenshot](Screenshot%202026-05-20%20at%2000.54.05.png)
+
+---
+
+# 🧪 Example Workflow
+
+```python
+from autoexplainml.core.pipeline import run_pipeline
+
+result = run_pipeline(model, X)
+print(result)
+```
+
+---
+
+# 👨‍💻 Author
+
 Sidhant Narang
+
+---
+
+# 🔥 Why This Project Matters
+
+AutoExplainML bridges the gap between:
+
+* Machine Learning models
+* Human understanding
+* Automated reporting systems
+
+Making AI **transparent, explainable, and usable for everyone**.
+
+
