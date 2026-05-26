@@ -1,9 +1,18 @@
-FROM python:3.10
+FROM python:3.11
 
 WORKDIR /app
 
+# Install system deps (needed for shap sometimes)
+RUN apt-get update && apt-get install -y build-essential
+
+# Copy dependency file
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy full project
 COPY . .
 
-RUN pip install -r requirements.txt
+# ✅ Install your package WITH extras
+RUN pip install --no-cache-dir ".[xai]"
 
-CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "saas.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
