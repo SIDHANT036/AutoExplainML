@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, UploadFile, File, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer
 from pydantic import BaseModel
@@ -18,6 +19,14 @@ app = FastAPI(
     description="Explainable AI SaaS API (JWT + Async Jobs + Reports)",
     version="3.1.0"
 )
+
+
+# =========================================================
+# STARTUP EVENT (ADDED - IMPORTANT FOR RENDER DEBUGGING)
+# =========================================================
+@app.on_event("startup")
+def startup_event():
+    print("AutoExplainML API started")
 
 
 # =========================================================
@@ -127,7 +136,7 @@ async def run_job(
     if X.empty:
         raise HTTPException(status_code=400, detail="Dataset is empty")
 
-    # STEP 3: create async job (Celery-ready)
+    # STEP 3: create async job
     job_id = create_job(
         model=model,
         X=X,
