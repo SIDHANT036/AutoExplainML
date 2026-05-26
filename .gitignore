@@ -1,8 +1,21 @@
+# Python env
+.venv/
+.venv-1/
+
+# Cache
 __pycache__/
 *.pyc
-venv/
-.DS_Store
 
+# Builds
 dist/
 build/
 *.egg-info/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+
+# Screenshots
+Screenshot*.png
