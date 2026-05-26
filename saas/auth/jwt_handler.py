@@ -2,6 +2,9 @@ from jose import jwt, JWTError
 from datetime import datetime, timedelta
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
+
 # =========================
 # SECURITY CONFIG (PROD SAFE)
 # =========================

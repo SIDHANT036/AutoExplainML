@@ -17,7 +17,7 @@ from saas.jobs.job_manager import create_job, get_job
 app = FastAPI(
     title="AutoExplainML SaaS",
     description="Explainable AI SaaS API (JWT + Async Jobs + Reports)",
-    version="3.1.0"
+    version="3.2.0"
 )
 
 
