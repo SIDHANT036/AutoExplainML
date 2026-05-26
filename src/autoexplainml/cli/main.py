@@ -3,6 +3,7 @@ import joblib
 import pandas as pd
 import json
 import os
+from pathlib import Path
 
 from autoexplainml.core.pipeline import run_pipeline
 from autoexplainml.product.project_mode import run_full_project
@@ -28,12 +29,26 @@ def main():
 
     args = parser.parse_args()
 
+    model_path = Path(args.model)
+    data_path = Path(args.data)
+
     try:
+        # =========================
+        # VALIDATION (FIXED ISSUE YOU HAD)
+        # =========================
+        if not model_path.exists():
+            print(f"❌ Model file not found: {model_path}")
+            return
+
+        if not data_path.exists():
+            print(f"❌ Data file not found: {data_path}")
+            return
+
         # =========================
         # LOAD INPUTS
         # =========================
-        model = joblib.load(args.model)
-        X = pd.read_csv(args.data)
+        model = joblib.load(model_path)
+        X = pd.read_csv(data_path, low_memory=False)
 
         print("\n🚀 AutoExplainML Running...")
         print(f"Mode: {args.mode}\n")
@@ -49,36 +64,45 @@ def main():
             print(json.dumps(result, indent=2, default=str))
 
         # =========================
-        # MODE 2: PROJECT (FULL AUTO OUTPUT)
+        # MODE 2: PROJECT
         # =========================
         elif args.mode == "project":
 
             result = run_full_project(model, X)
 
             # =========================
-            # CREATE OUTPUT DIRECTORY
+            # OUTPUT DIRECTORY
             # =========================
             output_dir = "autoexplainml_outputs"
             os.makedirs(output_dir, exist_ok=True)
 
             # =========================
-            # SAVE JSON RESULT
+            # SAVE JSON
             # =========================
             json_path = os.path.join(output_dir, "result.json")
             with open(json_path, "w") as f:
                 json.dump(result, f, indent=2, default=str)
 
             # =========================
-            # EXPORT REPORTS
+            # EXPORT REPORTS (SAFE)
             # =========================
-            html_path = export_html(result)
-            pdf_path = export_pdf(result)
+            try:
+                html_path = export_html(result)
+            except Exception as e:
+                print(f"⚠ HTML export failed: {e}")
+                html_path = None
+
+            try:
+                pdf_path = export_pdf(result)
+            except Exception as e:
+                print(f"⚠ PDF export failed: {e}")
+                pdf_path = None
 
             # =========================
-            # FINAL OUTPUT MESSAGE
+            # FINAL OUTPUT
             # =========================
             print("\n📦 PROJECT OUTPUT GENERATED SUCCESSFULLY\n")
-            print(f"📁 JSON File : {json_path}")
+            print(f"📁 JSON File  : {json_path}")
             print(f"🌐 HTML Report: {html_path}")
             print(f"📄 PDF Report : {pdf_path}")
 

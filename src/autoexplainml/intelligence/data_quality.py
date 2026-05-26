@@ -1,12 +1,16 @@
-# intelligence/data_quality.py
+import pandas as pd
 
-import numpy as np
 
 def check_data_quality(X):
 
-    report = {}
+    if not isinstance(X, pd.DataFrame):
+        X = pd.DataFrame(X)
 
-    report["missing_values"] = int(np.isnan(X).sum())
-    report["shape"] = X.shape
+    X = X.copy()
 
-    return report
+    return {
+        "shape": X.shape,
+        "missing_values": int(X.isna().sum().sum()),
+        "duplicate_rows": int(X.duplicated().sum()),
+        "columns": list(X.columns)
+    }

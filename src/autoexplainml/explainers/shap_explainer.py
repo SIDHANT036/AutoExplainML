@@ -5,45 +5,31 @@ from .base import BaseExplainer
 
 
 class SHAPExplainer(BaseExplainer):
-    """
-    SHAP-based global feature importance explainer
-    """
 
     def explain(self, model, X):
-        """
-        Generate SHAP explanations for a trained model.
 
-        Parameters:
-        model: trained ML model
-        X: pd.DataFrame input features
-
-        Returns:
-        dict: feature importance based on SHAP values
-        """
-
-        # Ensure input is DataFrame
         if not isinstance(X, pd.DataFrame):
             X = pd.DataFrame(X)
 
-        # Create SHAP explainer
-        explainer = shap.Explainer(model, X)
-        shap_values = explainer(X)
+        # KEEP ONLY NUMERIC (FIX dtype('O') ERROR)
+        X = X.select_dtypes(include=["number"]).copy()
 
-        # Compute global feature importance
+        # SMALL SAMPLE (CRITICAL PERFORMANCE FIX)
+        X_sample = X.sample(min(200, len(X)), random_state=42)
+
+        explainer = shap.Explainer(model, X_sample)
+        shap_values = explainer(X_sample)
+
+        # FIX: flatten safely
         importance = np.abs(shap_values.values).mean(axis=0)
 
         return {
             "method": "shap",
-            "features": list(X.columns),
-            "importance": importance.tolist()
+            "features": list(X_sample.columns),
+            "importance": importance.tolist(),
+            "shap_values": shap_values.values[:50].tolist()  # LIMIT SIZE
         }
 
 
-# =========================================================
-# BACKWARD COMPATIBILITY WRAPPER (IMPORTANT FIX)
-# =========================================================
 def explain_shap(model, X):
-    """
-    Functional wrapper so old engine imports still work.
-    """
     return SHAPExplainer().explain(model, X)
