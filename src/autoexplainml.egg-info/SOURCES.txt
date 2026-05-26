@@ -37,3 +37,11 @@ src/autoexplainml/utils/logging.py
 src/autoexplainml/visualization/dashboard.py
 src/autoexplainml/visualization/heatmaps.py
 src/autoexplainml/visualization/plots.py
+tests/test_auto_detect.py
+tests/test_cli_api.py
+tests/test_engine.py
+tests/test_explainers.py
+tests/test_intelligence.py
+tests/test_pipeline.py
+tests/test_reporting.py
+tests/test_validator.py

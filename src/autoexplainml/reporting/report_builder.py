@@ -1,7 +1,6 @@
 # reporting/report_builder.py
 
-def build_report(explanation, data_quality, fairness):
-
+def build_report(explanation, data_quality=None, fairness=None):
     return {
         "summary": "AutoExplainML Report",
         "explanation": explanation,
